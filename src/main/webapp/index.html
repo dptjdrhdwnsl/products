@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+$(function(){
+var thList=["구로점","영등포점","부천점","망우역점"];
+	for(var i = 0;i<thList.length;i++)
+		$("#th").append("<option value='"+i+"'>"+thList[i]+"</option>");
+	// 영화
+	// 2차배열- 구로점,영등포점,부천점,망우역점
+	var moList=[["가디언","보안관"],//구로
+		["가디언","특별시민","분노의질주"],//영등포
+		["분노의질주","가디언"],//부천
+		["스머프","분노의질주","특별시민","보안관"]]//망우역
+	//먼저 구로점을뿌린다.
+	for(var i = 0;i<moList[0].length;i++)
+		$("#mo").append("<option value='"+i+"'>"+moList[0][i]+"</option>");
+	//영화관 선택 하면 영화관에 맞춰서 영화가 바뀌는 코드
+	$("#th").change(function(){
+		$("#mo").empty();//영화리스트를 비운다.
+		var th = $("#th").val();//영화관선택 인덱스번호를 가져온다.
+		for(var i=0;i<moList[th].length;i++)
+			$("#mo").append("<option value='"+i+"'>"+moList[th][i]+"</option>");
+		});
+});
+</script>
+</head>
+<body>
+영화관
+<select id="th"></select>
+상영영화
+<select id="mo"></select>
+</body>
+</html>
